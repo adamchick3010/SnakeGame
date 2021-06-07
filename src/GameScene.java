@@ -8,16 +8,21 @@ public class GameScene extends Scene{
 	Rect background, foreground;
 	Snake snake;
 	KeyL keyListener;
+	SnakeAI snakeAI;
 	
 	public Food food;
+	public Frog frog;
 	
 	public GameScene(KeyL keyListener) {
 		background = new Rect(0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT); //setting size of game background
 		foreground = new Rect(24, 48, Constants.TILE_WIDTH * 31, Constants.TILE_WIDTH * 22);// creating 31 columns and 22 rows with the height of 24
 		snake = new Snake(10, 48, 48 + 24, 24, 24, foreground); //size - 5, startX - 48, startY - 48 + 24, bodyW - 24, bodyH - 24
 		this.keyListener = keyListener;
-		food = new Food(foreground, snake, 12, 12, Color.GREEN); //creating a bonus for snake
+		food = new Food(foreground, snake, 24, 24, Color.GREEN); //creating a bonus for snake
+		frog = new Frog(foreground,snake,24,24,Color.red);
+		snakeAI = new SnakeAI(snake,food,frog,10,120,120+24,24,24,foreground);
 		food.spawn();
+		frog.spawn();
 	}
 	
 	@Override
@@ -32,11 +37,14 @@ public class GameScene extends Scene{
 		} else if (keyListener.isKeyPressed(KeyEvent.VK_LEFT)) {
 			snake.changeDirection(Direction.LEFT);
 		} //checking user is pressing any key to move the snake in another way
-		
+		snakeAI.update(dt);
 		if (!food.isSpawned) food.spawn(); //calling spawning food everytime we eat that
-		
+		if (!frog.isSpawned) frog.spawn();
 		food.update(dt); //food updates after every delta time
 		snake.update(dt); //snakes update after every delta time
+
+		frog.update1(dt);
+
 	}
 	
 	@Override
@@ -49,6 +57,8 @@ public class GameScene extends Scene{
 		
 		snake.draw(g2);
 		food.draw(g2);
+		snakeAI.draw(g2);
+		frog.draw(g2);
 	}
 
 }

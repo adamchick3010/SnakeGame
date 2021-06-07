@@ -8,6 +8,7 @@ public class Snake {
 	public int size;
 	public int tail = 0; //starting value
 	public int head = 0; //starting value
+	public SnakeAI snakeAI;
 	
 	//snake movement
 	public Direction direction = Direction.RIGHT;

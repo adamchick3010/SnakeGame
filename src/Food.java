@@ -1,5 +1,4 @@
 import java.awt.*;
-import java.awt.geom.Graphics2D;
 
 
 public class Food {
