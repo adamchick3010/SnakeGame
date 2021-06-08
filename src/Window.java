@@ -9,10 +9,14 @@ public class Window extends JFrame implements Runnable{
 	
 	public int currentState;
 	public Scene currentScene;
+	public GameOverScene scene;
+	public int score;
 	
 	public KeyL keyListener = new KeyL();
+	public KeyL key2 = new KeyL();
 	public MouseL mouseListener = new MouseL();
-	
+
+
 	public Window(int width, int height, String title) {
 		setSize(width, height);
 		setTitle(title);
@@ -44,11 +48,18 @@ public class Window extends JFrame implements Runnable{
 		currentState = newState;
 		switch(currentState) {
 		case 0:
+			if (score != 0){
+				scene = new GameOverScene(score,keyListener);
+				score = 0;
+			}
+
 			currentScene = new MenuScene(keyListener, mouseListener); // when newState equals 0 we are in the Menu Scene
+
 			break;
 		case 1:
 			currentScene = new GameScene(keyListener); // when newState equals 1 we are in the game mode
 			break;
+
 		default:
 			System.out.println("Unknown scene.");
 			currentScene = null;
@@ -72,7 +83,7 @@ public class Window extends JFrame implements Runnable{
 		
 		currentScene.draw(g);
 	}
-	//Dziêki wykorzystaniu adnotacji @Override kompilator otrzymuje od nas informacjê, ¿e dana metoda bêdzie przys³aniaæ inn¹ metodê.
+	//Dziï¿½ki wykorzystaniu adnotacji @Override kompilator otrzymuje od nas informacjï¿½, ï¿½e dana metoda bï¿½dzie przysï¿½aniaï¿½ innï¿½ metodï¿½.
 	@Override
 	public void run() {
 		double lastFrameTime = 0.0; //inicjujemy czas od 0

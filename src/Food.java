@@ -7,14 +7,16 @@ public class Food {
 	public int width, height;
 	public Color color;
 	public Rect rect;
+	public Obstacle obstacle;
 	
 	public int xPadding;
 	
 	public boolean isSpawned = false;
 
-	public Food(Rect background, Snake snake, int width, int height, Color color) {
+	public Food(Rect background, Snake snake,Obstacle obstacle ,int width, int height, Color color) {
 		this.background = background;
 		this.snake = snake;
+		this.obstacle = obstacle;
 		this.width = width;
 		this.height = height;
 		this.color = color;
@@ -29,13 +31,14 @@ public class Food {
 			double randY = (int)(Math.random() * (int)(background.height / Constants.TILE_WIDTH)) * Constants.TILE_WIDTH + background.y; //generating random number which wxists in the y scale background
 			this.rect.x = randX;
 			this.rect.y = randY;
-		} while(snake.intersectingWithRect(this.rect)); //trying to avoid spawning on the place where our snake is
+		} while(snake.intersectingWithRect(this.rect) || obstacle.intersectingWithRect(new Rect(rect.x+width, rect.y, width,height))); //trying to avoid spawning on the place where our snake is
 		this.isSpawned = true;
 	}
 
 	public void update(double dt) {
 		if (snake.intersectingWithRect(this.rect)) {
             snake.grow();
+            Window.getWindow().score += 1;
             this.rect.x = -100;
             this.rect.y = -100;
             isSpawned = false;

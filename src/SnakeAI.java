@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class SnakeAI {
-    public Rect[] body = new Rect[100];
+    public Rect[] body = new Rect[300];
     public double bodyWidth, bodyHeight;
     public int size;
     public int tail = 0; //starting value
@@ -12,6 +12,7 @@ public class SnakeAI {
     public Frog frog;
     public Snake snake;
     public Food food;
+    public Obstacle obstacle;
 
     //snake movement
     public Direction direction = Direction.RIGHT;
@@ -21,7 +22,8 @@ public class SnakeAI {
 
     public Rect background;
 
-    public SnakeAI(Snake snake, Food food,Frog frog, int size, double startX, double startY, double bodyWidth, double bodyHeight, Rect background) { //constructor
+    public SnakeAI(Obstacle obstacle,Snake snake, Food food,Frog frog, int size, double startX, double startY, double bodyWidth, double bodyHeight, Rect background) { //constructor
+        this.obstacle = obstacle;
         this.snake = snake;
         this.food = food;
         this.frog = frog;
@@ -44,13 +46,14 @@ public class SnakeAI {
         }// setting time for update meanwhile the deltatime - wait time left is time between hitted key for example and next time with interaction of game
 
 
-        if (intersectingWithSelf()||intersectingWithRect(snake.body[head])||intersectingWithSnake(snake)) {
+        if (intersectingWithRect(snake.body[head])||intersectingWithSnake(snake)) {
             Window.getWindow().changeState(0);
         } // if our snake has a crush we are changing state for 0 so we re going back to the menu
 
 
-        waitTimeLeft = ogWaitBetweenUpdates;
+        waitTimeLeft = 0.2f;
         snake_movement();
+        waitTimeLeft = ogWaitBetweenUpdates;
         double newX = 0;
         double newY = 0;
 
@@ -76,11 +79,50 @@ public class SnakeAI {
 
         body[head].x = newX;
         body[head].y = newY;
+        if (intersectingWithRect(this.food.rect)) {
+            grow();
+            this.food.rect.x = -100;
+            this.food.rect.y = -100;
+            food.isSpawned = false;
+        }
+        if (intersectingWithRect(this.frog.rect)) {
+            grow();
+            this.frog.rect.x = -100;
+            this.frog.rect.y = -100;
+            frog.isSpawned = false;
+        }
+
     }
+
+    public void grow() {
+        double newX = 0;
+        double newY = 0;
+
+        if (direction == Direction.RIGHT) {
+            newX = body[tail].x + bodyWidth;
+            newY = body[tail].y;
+        } //when we go right - our new x position is going on the right place
+        else if (direction == Direction.LEFT){
+            newX = body[tail].x - bodyWidth;
+            newY = body[tail].y; //same for the left side
+        } else if(direction == Direction.UP) {
+            newX = body[tail].x;
+            newY = body[tail].y - bodyHeight;
+        } else if (direction == Direction.DOWN) {
+            newX = body[tail].x;
+            newY = body[tail].y + bodyHeight;
+        }
+
+        Rect newBodyPiece = new Rect(newX, newY, bodyWidth, bodyHeight);
+
+        tail = (tail - 1) % body.length;
+        body[tail] = newBodyPiece;
+
+    } // snake growing after eating food
 
     public boolean intersectingWithSelf() {
         Rect headR = body[head];
-        return intersectingWithRect(headR) || intersectingWithScreenBoundaries(headR);
+        return intersectingWithRect(headR);
     } //detecting crashes of our snake with himself
 
     public boolean intersectingWithRect(Rect rect) {
@@ -91,8 +133,14 @@ public class SnakeAI {
     }//detecting crashes with food
 
     public boolean intersectingWithSnake(Snake snake){
-        for(int i = tail; i != head; i = (i + 1) % body.length){
+        for(int i = snake.tail; i != snake.head; i = (i + 1) % snake.body.length){
             if(intersectingWithRect(snake.body[i])) return true;
+        }
+        return false;
+    }
+    public boolean intersectingWithSnakeAI(){
+        for(int i = tail; i != head; i = (i + 1) % body.length){
+            if(intersectingWithRect(body[i])) return true;
         }
         return false;
     }
@@ -122,61 +170,89 @@ public class SnakeAI {
 
     public Direction randDirection(Direction dir) {
         if(dir==Direction.DOWN){
-            int i = new Random().nextInt(3);
+            int i = new Random().nextInt(2);
             if (i == 0)dir=Direction.LEFT;
-            if (i==1)dir=Direction.UP;
-            if(i==2)dir=Direction.RIGHT;
+            if (i==1)dir=Direction.RIGHT;
         }
-        if(dir==Direction.UP){
-            int i = new Random().nextInt(3);
+        else if(dir==Direction.UP){
+            int i = new Random().nextInt(2);
             if (i == 0)dir=Direction.LEFT;
-            if (i==1)dir=Direction.DOWN;
-            if(i==2)dir=Direction.RIGHT;
+            if (i==1)dir=Direction.RIGHT;
         }
-        if(dir==Direction.LEFT){
-            int i = new Random().nextInt(3);
+        else if(dir==Direction.LEFT){
+            int i = new Random().nextInt(2);
             if (i == 0)dir=Direction.DOWN;
             if (i==1)dir=Direction.UP;
-            if(i==2)dir=Direction.RIGHT;
         }
-        if(dir==Direction.RIGHT){
-            int i = new Random().nextInt(3);
-            if (i == 0)dir=Direction.LEFT;
+        else if(dir==Direction.RIGHT){
+            int i = new Random().nextInt(2);
+            if (i == 0)dir=Direction.DOWN;
             if (i==1)dir=Direction.UP;
-            if(i==2)dir=Direction.DOWN;
         }
         return dir;
     }
 
 
     public void snake_movement(){
-        //Searching for food
-//        if(food.rect.x != body[head].x) changeDirection(randDirection(direction));
-//        else if(food.rect.y != body[head].x)changeDirection(randDirection(direction));
+        //Searhing for food
+        if(food.rect.x == body[head].x){
+            if(direction ==Direction.RIGHT)changeDirection(Direction.UP);
+            else changeDirection(Direction.DOWN);
+        }
+        else if(food.rect.y == body[head].y){
+            if(direction ==Direction.UP)changeDirection(Direction.LEFT);
+            else changeDirection(Direction.RIGHT);
+        }
+
+//        if(frog.rect.x == body[head].x){
+//            if(direction == Direction.RIGHT && direction!= Direction.UP)changeDirection(Direction.UP);
+//            else if (direction!=Direction.DOWN)changeDirection(Direction.DOWN);
+//        }
+//        else if(frog.rect.y == body[head].y){
+//            if(direction ==Direction.UP && direction != Direction.LEFT)changeDirection(Direction.LEFT);
+//            else if(direction !=Direction.RIGHT) changeDirection(Direction.RIGHT);
+//        }
+
+
+        //Avoiding obstacle
+        if(obstacle.intersectingWithRect(new Rect(body[head].x+bodyWidth,body[head].y,body[head].width,body[head].height))){
+            changeDirection(Direction.DOWN);
+        }
+        else if(obstacle.intersectingWithRect(new Rect(body[head].x-bodyWidth,body[head].y,body[head].width,body[head].height))){
+            changeDirection(Direction.UP);
+        }
+        else if(obstacle.intersectingWithRect(new Rect(body[head].x,body[head].y+bodyWidth,body[head].width,body[head].height))){
+            changeDirection(Direction.RIGHT);
+        }
+        else if(obstacle.intersectingWithRect(new Rect(body[head].x,body[head].y-bodyWidth,body[head].width,body[head].height))){
+            changeDirection(Direction.LEFT);
+        }
 
         //Avoiding borders
-        if(body[head].x - bodyWidth  <= background.x){changeDirection(Direction.DOWN);}
-        else if(body[head].x + (2*bodyWidth) >= background.x+background.width){changeDirection(Direction.UP);}
-        else if((body[head].y - bodyWidth) <= background.y){changeDirection(Direction.LEFT);}
-        else if(body[head].y + (2*bodyWidth) >= background.y + background.height){changeDirection(Direction.RIGHT);}
+        if(body[head].x   <= background.x && direction==Direction.LEFT){changeDirection(Direction.DOWN);}
+        else if(body[head].x + bodyWidth >= background.x+background.width&& direction == Direction.RIGHT){changeDirection(Direction.UP);}
+        else if((body[head].y ) <= background.y && direction ==Direction.UP){changeDirection(Direction.LEFT);}
+        else if(body[head].y + bodyWidth >= background.y + background.height && direction ==Direction.DOWN){changeDirection(Direction.RIGHT);}
 
         //Avoiding corners
-        if(body[head].x - bodyWidth <= background.x && (body[head].y - bodyWidth) <= background.y){
+        if(body[head].x  <= background.x && body[head].y  <= background.y){
             if (direction == Direction.UP) changeDirection(Direction.RIGHT);
             if (direction == Direction.LEFT) changeDirection(Direction.DOWN);
         }
-        else if(body[head].x - bodyWidth  <= background.x && body[head].y + (2*bodyWidth) >= background.y + background.height){
+        else if(body[head].x   <= background.x && body[head].y + bodyWidth >= background.y + background.height){
             if (direction == Direction.DOWN) changeDirection(Direction.RIGHT);
             if (direction == Direction.LEFT) changeDirection(Direction.UP);
         }
-        else if(body[head].x + (2*bodyWidth) >= background.x+background.width && body[head].y + (2*bodyWidth) >= background.y + background.height){
+        else if(body[head].x + bodyWidth >= background.x+background.width && body[head].y + bodyWidth >= background.y + background.height){
             if (direction == Direction.DOWN) changeDirection(Direction.LEFT);
             if (direction == Direction.RIGHT) changeDirection(Direction.UP);
         }
-        else if(body[head].x + (2*bodyWidth) >= background.x+background.width && (body[head].y - bodyWidth) <= background.y) {
+        else if(body[head].x + bodyWidth >= background.x+background.width && body[head].y  <= background.y) {
             if (direction == Direction.UP) changeDirection(Direction.LEFT);
             if (direction == Direction.RIGHT) changeDirection(Direction.DOWN);
         }
+
+
 
 
 

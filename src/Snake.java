@@ -3,12 +3,12 @@ import java.awt.*;
 
 
 public class Snake {
-	public Rect[] body = new Rect[100];
+	public Rect[] body = new Rect[300];
 	public double bodyWidth, bodyHeight;
 	public int size;
 	public int tail = 0; //starting value
 	public int head = 0; //starting value
-	public SnakeAI snakeAI;
+	public int score = 0;
 	
 	//snake movement
 	public Direction direction = Direction.RIGHT;
@@ -17,8 +17,10 @@ public class Snake {
 	public double waitTimeLeft = ogWaitBetweenUpdates;
 	
 	public Rect background;
+	public Obstacle obstacle;
 	
-	public Snake(int size, double startX, double startY, double bodyWidth, double bodyHeight, Rect background) { //constructor
+	public Snake(Obstacle obstacle,int size, double startX, double startY, double bodyWidth, double bodyHeight, Rect background) { //constructor
+		this.obstacle = obstacle;
 		this.size = size; //integer consists size of snake
 		this.bodyWidth = bodyWidth; //width of body - must be same as one piece of field width
 		this.bodyHeight = bodyHeight; //length of body
@@ -84,7 +86,7 @@ public class Snake {
 	 
 	 public boolean intersectingWithSelf() {
 		 Rect headR = body[head];
-		 return intersectingWithRect(headR) || intersectingWithScreenBoundaries(headR);
+		 return intersectingWithRect(headR) || intersectingWithScreenBoundaries(headR)|| obstacle.intersectingWithRect(headR);
 		 } //detecting crashes of our snake with himself
 	
 	 public boolean intersectingWithRect(Rect rect) {
