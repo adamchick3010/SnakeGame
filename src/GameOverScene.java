@@ -3,7 +3,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import javax.swing.*;
 
-
+/**
+ * Scena po zakończeniu rozgrywki
+ */
 public class GameOverScene  extends JFrame  {
 
     public static final int FRAME_WIDTH = 250;
@@ -19,7 +21,11 @@ public class GameOverScene  extends JFrame  {
     JButton saveButton;
     JTextField nameTextField;
 
-
+    /**
+     * Tworzy obiekt klasy GameOverScene
+     * @param score - wynik gracza
+     * @param keyListener
+     */
     GameOverScene(int score,KeyL keyListener) {
         this.score = score;
         this.setTitle("Game Over");
@@ -49,13 +55,19 @@ public class GameOverScene  extends JFrame  {
         this.add(saveButton);
     }
 
-
+    /**
+     * Wczytanie wyniku i zapis do pliku
+     */
     private void submitScore() {
         this.saveScore(nameTextField.getText(), this.score);
         this.dispose();
     }
 
-
+    /**
+     * Zapisanie wyniku do pliku
+     * @param name
+     * @param points
+     */
     private void saveScore(String name, int points) {
         try {
             FileWriter myWriter = new FileWriter(file, true);

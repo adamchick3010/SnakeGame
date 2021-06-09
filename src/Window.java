@@ -2,6 +2,9 @@ import java.awt.*;
 
 import javax.swing.JFrame; //importowanie biblioteki swing
 
+/**
+ * Okno gry
+ */
 public class Window extends JFrame implements Runnable{
 
 	public static Window window = null;
@@ -16,7 +19,12 @@ public class Window extends JFrame implements Runnable{
 	public KeyL key2 = new KeyL();
 	public MouseL mouseListener = new MouseL();
 
-
+	/**
+	 * Tworzy obiekt klasy gry
+	 * @param width
+	 * @param height
+	 * @param title
+	 */
 	public Window(int width, int height, String title) {
 		setSize(width, height);
 		setTitle(title);
@@ -31,19 +39,30 @@ public class Window extends JFrame implements Runnable{
 		
 		changeState(0);
 	} //setting basics
-	
+
+	/**
+	 * Zwraca okno gry
+	 * @return
+	 */
 	public static Window getWindow() {
 		if (Window.window == null) {
 			Window.window = new Window(Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, Constants.SCREEN_TITLE); //a method creating window whith the size
 		}
 		return Window.window;
 	}
-	
+
+	/**
+	 * Zamyka okno
+	 */
 	public void close() {
 		isRunning = false; // ability to close application when exit button is clicked
 		
 	}
-	
+
+	/**
+	 * Zmienia stan okna gry menu, okno gry i okno zakończenia
+	 * @param newState
+	 */
 	public void changeState(int newState) {
 		currentState = newState;
 		switch(currentState) {
@@ -66,7 +85,11 @@ public class Window extends JFrame implements Runnable{
 			break;
 		} //this switch allow us choice the scenes between the menu and game scene
 	}
-	
+
+	/**
+	 * Aktualizacja okna
+	 * @param dt
+	 */
 	public void update(double dt) {
 		Image dbImage = createImage(getWidth(), getHeight());
 		Graphics dbg = dbImage.getGraphics();
@@ -75,7 +98,11 @@ public class Window extends JFrame implements Runnable{
 		
 		currentScene.update(dt);
 	} //double buffer allow us drawing the graphics into an off-screen and then copying them to the screen all the once
-	
+
+	/**
+	 * Rysowanie okna
+	 * @param g
+	 */
 	public void draw(Graphics g) {
 		Graphics2D g2 = (Graphics2D)g;
 		g2.setColor(Color.BLACK);

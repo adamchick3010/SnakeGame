@@ -4,6 +4,9 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import javax.imageio.ImageIO;
 
+/**
+ * Scena prezentująca menu gry
+ */
 public class MenuScene extends Scene {
 	
 	public KeyL keyListener; //keyboard listener
@@ -12,9 +15,12 @@ public class MenuScene extends Scene {
 	public Rect playRect, exitRect, titleRect; //places for the buttons
 	
 	public BufferedImage playCurrentImage, exitCurrentImage; //hovered buttons
-	
-	
-	
+
+
+	/**Tworzy obiekt klasy MenuScene
+	 * @param keyListener
+	 * @param mouseListener
+	 */
 	public MenuScene(KeyL keyListener, MouseL mouseListener) {
 		this.keyListener = keyListener;
 		this.mouseListener = mouseListener;
@@ -39,7 +45,11 @@ public class MenuScene extends Scene {
 		exitRect = new Rect(318, 355, 130, 55); //exit button static coordinates in window
 
 	}
-	
+
+	/**
+	 * Aktualizacja sceny
+	 * @param dt
+	 */
 	@Override
 	public void update(double dt) {
 		if (mouseListener.getX() >= playRect.x && mouseListener.getX() <= playRect.x + playRect.width && mouseListener.getY() >= playRect.y && mouseListener.getY() <= playRect.y + playRect.height) {
@@ -59,7 +69,11 @@ public class MenuScene extends Scene {
 			exitCurrentImage = exit; //unhovering the exit button
 		}//looking for the exit button and making it hover
 	}
-	
+
+	/**
+	 * Rysowanie sceny
+	 * @param g
+	 */
 	@Override
 	public void draw(Graphics g) {
 

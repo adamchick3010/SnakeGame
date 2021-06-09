@@ -3,6 +3,9 @@ import java.awt.event.KeyEvent;
 
 import java.awt.geom.Rectangle2D;
 
+/**
+ * Scena wykorzystywana do rozgrywki
+ */
 public class GameScene extends Scene{
 	
 	Rect background, foreground;
@@ -12,7 +15,11 @@ public class GameScene extends Scene{
 	Obstacle obstacle;
 	public Food food;
 	public Frog frog;
-	
+
+	/**
+	 * Tworzy obiekt klasy GameScene
+	 * @param keyListener
+	 */
 	public GameScene(KeyL keyListener) {
 		background = new Rect(0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT); //setting size of game background
 		foreground = new Rect(24, 48, Constants.TILE_WIDTH * 31, Constants.TILE_WIDTH * 22);// creating 31 columns and 22 rows with the height of 24
@@ -27,7 +34,12 @@ public class GameScene extends Scene{
 		frog.spawn();
 		snakeAI = new SnakeAI(obstacle,snake,food,frog,8,48,408,24,24,foreground);
 	}
-	
+
+	/**
+	 * Aktualizacja sceny
+	 * Wczytanie klawiszy oraz aktualizacja elementów gry
+	 * @param dt
+	 */
 	@Override
 	public void update(double dt) {
 		
@@ -52,7 +64,11 @@ public class GameScene extends Scene{
 
 
 	}
-	
+
+	/**
+	 * Rysowanie sceny
+	 * @param g
+	 */
 	@Override
 	public void draw(Graphics g) {
 		Graphics2D g2 = (Graphics2D)g;

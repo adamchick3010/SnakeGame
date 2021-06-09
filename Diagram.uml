@@ -1,0 +1,733 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>C:/Users/soksa/IdeaProjects/SnakeGame</OriginalElement>
+  <nodes>
+    <node x="543.4288942664848" y="3313.0">Window</node>
+    <node x="520.6940119045958" y="2843.0">GameOverScene</node>
+    <node x="1226.0100989639748" y="0.0">Rect</node>
+    <node x="962.1641883841319" y="215.0">Obstacle</node>
+    <node x="1042.653265304099" y="1635.0">Frog</node>
+    <node x="1699.3712204567062" y="661.0">Snake</node>
+    <node x="832.6767760122616" y="0.0">Constants</node>
+    <node x="2341.066921814172" y="2975.0">Time</node>
+    <node x="1541.7921541929877" y="2199.0">SnakeAI</node>
+    <node x="263.5" y="2419.5">Scene</node>
+    <node x="2090.3712204567064" y="292.0">Direction</node>
+    <node x="273.69401190459575" y="2843.0">MenuScene</node>
+    <node x="590.1788942664848" y="2397.0">KeyL</node>
+    <node x="1419.1641883841319" y="2887.0">GameScene</node>
+    <node x="555.4288942664848" y="3730.0">Main</node>
+    <node x="1164.0547418211177" y="1221.0">Food</node>
+    <node x="10.5" y="2375.0">MouseL</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="Frog" target="Rect" relationship="CREATE">
+      <point x="-67.11111111111109" y="-216.0" />
+      <point x="1126.5421541929877" y="1614.0" />
+      <point x="1120.5547418211177" y="1614.0" />
+      <point x="1120.5547418211177" y="620.0" />
+      <point x="1209.6641883841319" y="620.0" />
+      <point x="1209.6641883841319" y="175.0" />
+      <point x="1412.1975989639748" y="175.0" />
+      <point x="1412.1975989639748" y="165.0" />
+      <point x="1414.2600989639748" y="165.0" />
+      <point x="62.75" y="72.5" />
+    </edge>
+    <edge source="SnakeAI" target="Frog" relationship="DEPENDENCY">
+      <point x="-216.46153846153857" y="-271.0" />
+      <point x="1559.8306157314491" y="2178.0" />
+      <point x="1510.7921541929877" y="2178.0" />
+      <point x="1510.7921541929877" y="2098.0" />
+      <point x="1092.986598637432" y="2098.0" />
+      <point x="-100.66666666666674" y="216.0" />
+    </edge>
+    <edge source="GameScene" target="Frog" relationship="TO_ONE">
+      <point x="18.82352941176464" y="-139.0" />
+      <point x="1517.9877177958965" y="2822.0" />
+      <point x="1520.7921541929877" y="2822.0" />
+      <point x="1520.7921541929877" y="2088.0" />
+      <point x="1193.653265304099" y="2088.0" />
+      <point x="0.0" y="216.0" />
+    </edge>
+    <edge source="Window" target="KeyL" relationship="TO_ONE">
+      <point x="36.25" y="-183.5" />
+      <point x="666.6788942664848" y="3261.0" />
+      <point x="734.1940119045958" y="3261.0" />
+      <point x="734.1940119045958" y="2802.0" />
+      <point x="747.9288942664848" y="2802.0" />
+      <point x="747.9288942664848" y="2792.0" />
+      <point x="738.6788942664848" y="2792.0" />
+      <point x="49.5" y="73.0" />
+    </edge>
+    <edge source="SnakeAI" target="Window" relationship="DEPENDENCY">
+      <point x="156.33333333333348" y="271.0" />
+      <point x="1932.6254875263212" y="2792.0" />
+      <point x="2330.566921814172" y="2792.0" />
+      <point x="2330.566921814172" y="3291.0" />
+      <point x="695.6788942664848" y="3291.0" />
+      <point x="65.25" y="-183.5" />
+    </edge>
+    <edge source="Snake" target="Obstacle" relationship="DEPENDENCY">
+      <point x="-153.8571428571429" y="-249.0" />
+      <point x="1725.0140775995633" y="640.0" />
+      <point x="1226.1641883841319" y="640.0" />
+      <point x="1226.1641883841319" y="590.0" />
+      <point x="1021.4141883841319" y="590.0" />
+      <point x="-59.25" y="172.0" />
+    </edge>
+    <edge source="Frog" target="Snake" relationship="DEPENDENCY">
+      <point x="67.11111111111109" y="-216.0" />
+      <point x="1260.7643764152099" y="1594.0" />
+      <point x="1446.5547418211177" y="1594.0" />
+      <point x="1446.5547418211177" y="1190.0" />
+      <point x="1878.8712204567062" y="1190.0" />
+      <point x="0.0" y="249.0" />
+    </edge>
+    <edge source="GameScene" target="Food" relationship="CREATE">
+      <point x="0.0" y="-139.0" />
+      <point x="1499.1641883841319" y="2822.0" />
+      <point x="1500.2921541929877" y="2822.0" />
+      <point x="1500.2921541929877" y="1564.0" />
+      <point x="1300.0547418211177" y="1564.0" />
+      <point x="0.0" y="161.0" />
+    </edge>
+    <edge source="Frog" target="Food" relationship="DEPENDENCY">
+      <point x="134.22222222222217" y="-216.0" />
+      <point x="1327.8754875263212" y="1604.0" />
+      <point x="1500.2921541929877" y="1604.0" />
+      <point x="1500.2921541929877" y="1564.0" />
+      <point x="1300.0547418211177" y="1564.0" />
+      <point x="0.0" y="161.0" />
+    </edge>
+    <edge source="GameScene" target="Obstacle" relationship="CREATE">
+      <point x="-28.235294117647072" y="-139.0" />
+      <point x="1470.9288942664848" y="2772.0" />
+      <point x="817.5024236782494" y="2772.0" />
+      <point x="817.5024236782494" y="640.0" />
+      <point x="1226.1641883841319" y="640.0" />
+      <point x="1226.1641883841319" y="590.0" />
+      <point x="1021.4141883841319" y="590.0" />
+      <point x="-59.25" y="172.0" />
+    </edge>
+    <edge source="MenuScene" target="Rect" relationship="TO_ONE">
+      <point x="14.1875" y="-183.0" />
+      <point x="401.38151190459575" y="2782.0" />
+      <point x="434.0" y="2782.0" />
+      <point x="434.0" y="600.0" />
+      <point x="874.1767760122616" y="600.0" />
+      <point x="874.1767760122616" y="185.0" />
+      <point x="1346.0100989639748" y="185.0" />
+      <point x="1346.0100989639748" y="165.0" />
+      <point x="1288.7600989639748" y="165.0" />
+      <point x="-62.75" y="72.5" />
+    </edge>
+    <edge source="GameScene" target="SnakeAI" relationship="CREATE">
+      <point x="37.647058823529505" y="-139.0" />
+      <point x="1536.8112472076614" y="2782.0" />
+      <point x="1619.9588208596547" y="2782.0" />
+      <point x="-156.33333333333326" y="271.0" />
+    </edge>
+    <edge source="GameScene" target="Rect" relationship="CREATE">
+      <point x="75.29411764705878" y="-139.0" />
+      <point x="1574.4583060311907" y="2822.0" />
+      <point x="2317.4639806377018" y="2822.0" />
+      <point x="2317.4639806377018" y="175.0" />
+      <point x="1412.1975989639748" y="175.0" />
+      <point x="1412.1975989639748" y="165.0" />
+      <point x="1414.2600989639748" y="165.0" />
+      <point x="62.75" y="72.5" />
+    </edge>
+    <edge source="GameScene" target="Constants" relationship="DEPENDENCY">
+      <point x="-47.05882352941171" y="-139.0" />
+      <point x="1452.1053648547202" y="2792.0" />
+      <point x="798.6788942664848" y="2792.0" />
+      <point x="798.6788942664848" y="195.0" />
+      <point x="912.6767760122616" y="195.0" />
+      <point x="0.0" y="72.5" />
+    </edge>
+    <edge source="Obstacle" target="Rect" relationship="TO_MANY">
+      <point x="29.625" y="-172.0" />
+      <point x="1110.2891883841319" y="185.0" />
+      <point x="1346.0100989639748" y="185.0" />
+      <point x="1346.0100989639748" y="165.0" />
+      <point x="1288.7600989639748" y="165.0" />
+      <point x="-62.75" y="72.5" />
+    </edge>
+    <edge source="Window" target="Constants" relationship="DEPENDENCY">
+      <point x="-79.75" y="-183.5" />
+      <point x="550.6788942664848" y="3291.0" />
+      <point x="0.0" y="3291.0" />
+      <point x="0.0" y="195.0" />
+      <point x="912.6767760122616" y="195.0" />
+      <point x="0.0" y="72.5" />
+    </edge>
+    <edge source="GameScene" target="Direction" relationship="DEPENDENCY">
+      <point x="65.88235294117658" y="-139.0" />
+      <point x="1565.0465413253085" y="2812.0" />
+      <point x="2308.0522159318193" y="2812.0" />
+      <point x="2308.0522159318193" y="640.0" />
+      <point x="2223.8712204567064" y="640.0" />
+      <point x="44.5" y="95.0" />
+    </edge>
+    <edge source="GameScene" target="Snake" relationship="CREATE">
+      <point x="56.470588235294144" y="-139.0" />
+      <point x="1555.634776619426" y="2802.0" />
+      <point x="2298.640451225937" y="2802.0" />
+      <point x="2298.640451225937" y="1190.0" />
+      <point x="1878.8712204567062" y="1190.0" />
+      <point x="0.0" y="249.0" />
+    </edge>
+    <edge source="Frog" target="Obstacle" relationship="TO_ONE">
+      <point x="0.0" y="-216.0" />
+      <point x="1193.653265304099" y="1604.0" />
+      <point x="1142.5547418211177" y="1604.0" />
+      <point x="1142.5547418211177" y="630.0" />
+      <point x="1237.1641883841319" y="630.0" />
+      <point x="1237.1641883841319" y="580.0" />
+      <point x="1139.9141883841319" y="580.0" />
+      <point x="59.25" y="172.0" />
+    </edge>
+    <edge source="Food" target="Obstacle" relationship="DEPENDENCY">
+      <point x="-77.71428571428578" y="-161.0" />
+      <point x="1222.3404561068319" y="1190.0" />
+      <point x="1226.1641883841319" y="1190.0" />
+      <point x="1226.1641883841319" y="590.0" />
+      <point x="1021.4141883841319" y="590.0" />
+      <point x="-59.25" y="172.0" />
+    </edge>
+    <edge source="Food" target="Rect" relationship="TO_ONE">
+      <point x="0.0" y="-161.0" />
+      <point x="1300.0547418211177" y="1190.0" />
+      <point x="1312.8553474408332" y="1190.0" />
+      <point x="1312.8553474408332" y="185.0" />
+      <point x="1346.0100989639748" y="185.0" />
+      <point x="1346.0100989639748" y="165.0" />
+      <point x="1288.7600989639748" y="165.0" />
+      <point x="-62.75" y="72.5" />
+    </edge>
+    <edge source="MenuScene" target="Window" relationship="DEPENDENCY">
+      <point x="56.75" y="183.0" />
+      <point x="443.94401190459575" y="3231.0" />
+      <point x="2330.566921814172" y="3231.0" />
+      <point x="2330.566921814172" y="3291.0" />
+      <point x="695.6788942664848" y="3291.0" />
+      <point x="65.25" y="-183.5" />
+    </edge>
+    <edge source="Obstacle" target="Rect" relationship="CREATE">
+      <point x="88.875" y="-172.0" />
+      <point x="1169.5391883841319" y="175.0" />
+      <point x="1412.1975989639748" y="175.0" />
+      <point x="1412.1975989639748" y="165.0" />
+      <point x="1414.2600989639748" y="165.0" />
+      <point x="62.75" y="72.5" />
+    </edge>
+    <edge source="Frog" target="Snake" relationship="TO_ONE">
+      <point x="33.55555555555566" y="-216.0" />
+      <point x="1227.2088208596547" y="1594.0" />
+      <point x="1153.5547418211177" y="1594.0" />
+      <point x="1153.5547418211177" y="1200.0" />
+      <point x="1539.999186265562" y="1200.0" />
+      <point x="1539.999186265562" y="1180.0" />
+      <point x="1759.2045537900394" y="1180.0" />
+      <point x="-119.66666666666674" y="249.0" />
+    </edge>
+    <edge source="Obstacle" target="Constants" relationship="DEPENDENCY">
+      <point x="-88.875" y="-172.0" />
+      <point x="991.7891883841319" y="195.0" />
+      <point x="912.6767760122616" y="195.0" />
+      <point x="0.0" y="72.5" />
+    </edge>
+    <edge source="MenuScene" target="Constants" relationship="DEPENDENCY">
+      <point x="-42.5625" y="-183.0" />
+      <point x="344.63151190459575" y="2792.0" />
+      <point x="253.0" y="2792.0" />
+      <point x="253.0" y="195.0" />
+      <point x="912.6767760122616" y="195.0" />
+      <point x="0.0" y="72.5" />
+    </edge>
+    <edge source="SnakeAI" target="Rect" relationship="TO_ONE">
+      <point x="72.15384615384619" y="-271.0" />
+      <point x="1848.446000346834" y="2138.0" />
+      <point x="2068.8712204567064" y="2138.0" />
+      <point x="2068.8712204567064" y="185.0" />
+      <point x="1346.0100989639748" y="185.0" />
+      <point x="1346.0100989639748" y="165.0" />
+      <point x="1288.7600989639748" y="165.0" />
+      <point x="-62.75" y="72.5" />
+    </edge>
+    <edge source="SnakeAI" target="Food" relationship="TO_ONE">
+      <point x="-144.30769230769238" y="-271.0" />
+      <point x="1631.9844618852953" y="2158.0" />
+      <point x="1596.7422385620916" y="2158.0" />
+      <point x="1596.7422385620916" y="1614.0" />
+      <point x="1490.2921541929877" y="1614.0" />
+      <point x="1490.2921541929877" y="1574.0" />
+      <point x="1209.388075154451" y="1574.0" />
+      <point x="-90.66666666666674" y="161.0" />
+    </edge>
+    <edge source="SnakeAI" target="Rect" relationship="TO_MANY">
+      <point x="108.23076923076928" y="-271.0" />
+      <point x="1884.5229234237572" y="2148.0" />
+      <point x="2079.8712204567064" y="2148.0" />
+      <point x="2079.8712204567064" y="185.0" />
+      <point x="1346.0100989639748" y="185.0" />
+      <point x="1346.0100989639748" y="165.0" />
+      <point x="1288.7600989639748" y="165.0" />
+      <point x="-62.75" y="72.5" />
+    </edge>
+    <edge source="MenuScene" target="Rect" relationship="CREATE">
+      <point x="42.5625" y="-183.0" />
+      <point x="429.75651190459575" y="2792.0" />
+      <point x="518.5851442664848" y="2792.0" />
+      <point x="518.5851442664848" y="620.0" />
+      <point x="951.6641883841319" y="620.0" />
+      <point x="951.6641883841319" y="175.0" />
+      <point x="1412.1975989639748" y="175.0" />
+      <point x="1412.1975989639748" y="165.0" />
+      <point x="1414.2600989639748" y="165.0" />
+      <point x="62.75" y="72.5" />
+    </edge>
+    <edge source="MenuScene" target="MouseL" relationship="DEPENDENCY">
+      <point x="-99.3125" y="-183.0" />
+      <point x="287.88151190459575" y="2812.0" />
+      <point x="148.06648189461475" y="2812.0" />
+      <point x="148.06648189461475" y="2802.0" />
+      <point x="68.5" y="2802.0" />
+      <point x="-58.0" y="95.0" />
+    </edge>
+    <edge source="Food" target="Window" relationship="DEPENDENCY">
+      <point x="90.66666666666674" y="161.0" />
+      <point x="1390.7214084877844" y="1584.0" />
+      <point x="2330.566921814172" y="1584.0" />
+      <point x="2330.566921814172" y="3291.0" />
+      <point x="695.6788942664848" y="3291.0" />
+      <point x="65.25" y="-183.5" />
+    </edge>
+    <edge source="Snake" target="Direction" relationship="TO_ONE">
+      <point x="102.57142857142867" y="-249.0" />
+      <point x="1981.4426490281348" y="630.0" />
+      <point x="2212.8712204567064" y="630.0" />
+      <point x="2212.8712204567064" y="620.0" />
+      <point x="2134.8712204567064" y="620.0" />
+      <point x="-44.5" y="95.0" />
+    </edge>
+    <edge source="SnakeAI" target="Snake" relationship="DEPENDENCY">
+      <point x="36.076923076923094" y="-271.0" />
+      <point x="1812.369077269911" y="2128.0" />
+      <point x="1878.8712204567062" y="2128.0" />
+      <point x="0.0" y="249.0" />
+    </edge>
+    <edge source="GameScene" target="Snake" relationship="TO_ONE">
+      <point x="28.235294117647072" y="-139.0" />
+      <point x="1527.399482501779" y="2822.0" />
+      <point x="1531.2921541929877" y="2822.0" />
+      <point x="1531.2921541929877" y="1200.0" />
+      <point x="1539.999186265562" y="1200.0" />
+      <point x="1539.999186265562" y="1180.0" />
+      <point x="1759.2045537900394" y="1180.0" />
+      <point x="-119.66666666666674" y="249.0" />
+    </edge>
+    <edge source="Food" target="Constants" relationship="DEPENDENCY">
+      <point x="-116.57142857142867" y="-161.0" />
+      <point x="1183.483313249689" y="1190.0" />
+      <point x="1174.5064399072735" y="1190.0" />
+      <point x="1174.5064399072735" y="600.0" />
+      <point x="929.6641883841319" y="600.0" />
+      <point x="929.6641883841319" y="195.0" />
+      <point x="912.6767760122616" y="195.0" />
+      <point x="0.0" y="72.5" />
+    </edge>
+    <edge source="MenuScene" target="KeyL" relationship="DEPENDENCY">
+      <point x="70.9375" y="-183.0" />
+      <point x="458.13151190459575" y="2812.0" />
+      <point x="721.6914818946145" y="2812.0" />
+      <point x="721.6914818946145" y="2792.0" />
+      <point x="639.6788942664848" y="2792.0" />
+      <point x="-49.5" y="73.0" />
+    </edge>
+    <edge source="GameScene" target="KeyL" relationship="DEPENDENCY">
+      <point x="-65.88235294117635" y="-139.0" />
+      <point x="1433.2818354429555" y="2812.0" />
+      <point x="721.6914818946145" y="2812.0" />
+      <point x="721.6914818946145" y="2792.0" />
+      <point x="639.6788942664848" y="2792.0" />
+      <point x="-49.5" y="73.0" />
+    </edge>
+    <edge source="Window" target="Time" relationship="DEPENDENCY">
+      <point x="79.75" y="-183.5" />
+      <point x="710.1788942664848" y="3281.0" />
+      <point x="2417.566921814172" y="3281.0" />
+      <point x="0.0" y="51.0" />
+    </edge>
+    <edge source="SnakeAI" target="Direction" relationship="DEPENDENCY">
+      <point x="180.38461538461547" y="-271.0" />
+      <point x="1956.6767695776034" y="2168.0" />
+      <point x="2223.8712204567064" y="2168.0" />
+      <point x="44.5" y="95.0" />
+    </edge>
+    <edge source="Food" target="Rect" relationship="CREATE">
+      <point x="38.85714285714289" y="-161.0" />
+      <point x="1338.9118846782605" y="1180.0" />
+      <point x="1412.1975989639748" y="1180.0" />
+      <point x="1412.1975989639748" y="165.0" />
+      <point x="1414.2600989639748" y="165.0" />
+      <point x="62.75" y="72.5" />
+    </edge>
+    <edge source="Window" target="GameOverScene" relationship="CREATE">
+      <point x="7.25" y="-183.5" />
+      <point x="637.6788942664848" y="3241.0" />
+      <point x="664.6940119045958" y="3241.0" />
+      <point x="48.0" y="183.0" />
+    </edge>
+    <edge source="Food" target="Obstacle" relationship="TO_ONE">
+      <point x="-38.85714285714289" y="-161.0" />
+      <point x="1261.1975989639748" y="1190.0" />
+      <point x="1237.1641883841319" y="1190.0" />
+      <point x="1237.1641883841319" y="580.0" />
+      <point x="1139.9141883841319" y="580.0" />
+      <point x="59.25" y="172.0" />
+    </edge>
+    <edge source="Snake" target="Rect" relationship="CREATE">
+      <point x="51.28571428571422" y="-249.0" />
+      <point x="1930.1569347424204" y="640.0" />
+      <point x="1956.8850957049488" y="640.0" />
+      <point x="1956.8850957049488" y="175.0" />
+      <point x="1412.1975989639748" y="175.0" />
+      <point x="1412.1975989639748" y="165.0" />
+      <point x="1414.2600989639748" y="165.0" />
+      <point x="62.75" y="72.5" />
+    </edge>
+    <edge source="Obstacle" target="Rect" relationship="TO_ONE">
+      <point x="-29.625" y="-172.0" />
+      <point x="1051.0391883841319" y="185.0" />
+      <point x="1346.0100989639748" y="185.0" />
+      <point x="1346.0100989639748" y="165.0" />
+      <point x="1288.7600989639748" y="165.0" />
+      <point x="-62.75" y="72.5" />
+    </edge>
+    <edge source="GameScene" target="SnakeAI" relationship="TO_ONE">
+      <point x="47.05882352941171" y="-139.0" />
+      <point x="1546.2230119135436" y="2792.0" />
+      <point x="1776.2921541929877" y="2792.0" />
+      <point x="0.0" y="271.0" />
+    </edge>
+    <edge source="SnakeAI" target="Rect" relationship="CREATE">
+      <point x="216.46153846153857" y="-271.0" />
+      <point x="1992.7536926545263" y="2178.0" />
+      <point x="2278.8712204567064" y="2178.0" />
+      <point x="2278.8712204567064" y="175.0" />
+      <point x="1412.1975989639748" y="175.0" />
+      <point x="1412.1975989639748" y="165.0" />
+      <point x="1414.2600989639748" y="165.0" />
+      <point x="62.75" y="72.5" />
+    </edge>
+    <edge source="SnakeAI" target="Food" relationship="DEPENDENCY">
+      <point x="-108.23076923076928" y="-271.0" />
+      <point x="1668.0613849622187" y="2148.0" />
+      <point x="1607.7422385620916" y="2148.0" />
+      <point x="1607.7422385620916" y="1604.0" />
+      <point x="1500.2921541929877" y="1604.0" />
+      <point x="1500.2921541929877" y="1564.0" />
+      <point x="1300.0547418211177" y="1564.0" />
+      <point x="0.0" y="161.0" />
+    </edge>
+    <edge source="GameScene" target="Rect" relationship="TO_ONE">
+      <point x="-37.64705882352928" y="-139.0" />
+      <point x="1461.5171295606026" y="2782.0" />
+      <point x="808.0906589723672" y="2782.0" />
+      <point x="808.0906589723672" y="610.0" />
+      <point x="918.6641883841319" y="610.0" />
+      <point x="918.6641883841319" y="185.0" />
+      <point x="1346.0100989639748" y="185.0" />
+      <point x="1346.0100989639748" y="165.0" />
+      <point x="1288.7600989639748" y="165.0" />
+      <point x="-62.75" y="72.5" />
+    </edge>
+    <edge source="Window" target="MouseL" relationship="CREATE">
+      <point x="-65.25" y="-183.5" />
+      <point x="565.1788942664848" y="3281.0" />
+      <point x="148.06648189461475" y="3281.0" />
+      <point x="148.06648189461475" y="2802.0" />
+      <point x="68.5" y="2802.0" />
+      <point x="-58.0" y="95.0" />
+    </edge>
+    <edge source="SnakeAI" target="Obstacle" relationship="TO_ONE">
+      <point x="0.0" y="-271.0" />
+      <point x="1776.2921541929877" y="2118.0" />
+      <point x="1688.8712204567062" y="2118.0" />
+      <point x="1688.8712204567062" y="630.0" />
+      <point x="1237.1641883841319" y="630.0" />
+      <point x="1237.1641883841319" y="580.0" />
+      <point x="1139.9141883841319" y="580.0" />
+      <point x="59.25" y="172.0" />
+    </edge>
+    <edge source="Food" target="Snake" relationship="DEPENDENCY">
+      <point x="116.57142857142844" y="-161.0" />
+      <point x="1416.626170392546" y="1190.0" />
+      <point x="1878.8712204567062" y="1190.0" />
+      <point x="0.0" y="249.0" />
+    </edge>
+    <edge source="Frog" target="Obstacle" relationship="DEPENDENCY">
+      <point x="-33.55555555555543" y="-216.0" />
+      <point x="1160.0977097485434" y="1614.0" />
+      <point x="1131.5547418211177" y="1614.0" />
+      <point x="1131.5547418211177" y="640.0" />
+      <point x="1226.1641883841319" y="640.0" />
+      <point x="1226.1641883841319" y="590.0" />
+      <point x="1021.4141883841319" y="590.0" />
+      <point x="-59.25" y="172.0" />
+    </edge>
+    <edge source="Main" target="Window" relationship="DEPENDENCY">
+      <point x="0.0" y="-39.5" />
+      <point x="0.0" y="183.5" />
+    </edge>
+    <edge source="Frog" target="Food" relationship="TO_ONE">
+      <point x="100.66666666666674" y="-216.0" />
+      <point x="1294.3199319707655" y="1614.0" />
+      <point x="1490.2921541929877" y="1614.0" />
+      <point x="1490.2921541929877" y="1574.0" />
+      <point x="1209.388075154451" y="1574.0" />
+      <point x="-90.66666666666674" y="161.0" />
+    </edge>
+    <edge source="GameScene" target="Frog" relationship="CREATE">
+      <point x="9.411764705882433" y="-139.0" />
+      <point x="1508.5759530900143" y="2822.0" />
+      <point x="1510.7921541929877" y="2822.0" />
+      <point x="1510.7921541929877" y="2098.0" />
+      <point x="1092.986598637432" y="2098.0" />
+      <point x="-100.66666666666674" y="216.0" />
+    </edge>
+    <edge source="GameOverScene" target="KeyL" relationship="DEPENDENCY">
+      <point x="0.0" y="-183.0" />
+      <point x="616.6940119045958" y="2812.0" />
+      <point x="721.6914818946145" y="2812.0" />
+      <point x="721.6914818946145" y="2792.0" />
+      <point x="639.6788942664848" y="2792.0" />
+      <point x="-49.5" y="73.0" />
+    </edge>
+    <edge source="Snake" target="Obstacle" relationship="TO_ONE">
+      <point x="-102.57142857142867" y="-249.0" />
+      <point x="1776.2997918852775" y="630.0" />
+      <point x="1237.1641883841319" y="630.0" />
+      <point x="1237.1641883841319" y="580.0" />
+      <point x="1139.9141883841319" y="580.0" />
+      <point x="59.25" y="172.0" />
+    </edge>
+    <edge source="MenuScene" target="MouseL" relationship="TO_ONE">
+      <point x="-70.9375" y="-183.0" />
+      <point x="316.25651190459575" y="2802.0" />
+      <point x="159.06648189461475" y="2802.0" />
+      <point x="159.06648189461475" y="2792.0" />
+      <point x="184.5" y="2792.0" />
+      <point x="58.0" y="95.0" />
+    </edge>
+    <edge source="Snake" target="Rect" relationship="TO_MANY">
+      <point x="-51.28571428571445" y="-249.0" />
+      <point x="1827.5855061709917" y="640.0" />
+      <point x="1818.8453401117158" y="640.0" />
+      <point x="1818.8453401117158" y="185.0" />
+      <point x="1346.0100989639748" y="185.0" />
+      <point x="1346.0100989639748" y="165.0" />
+      <point x="1288.7600989639748" y="165.0" />
+      <point x="-62.75" y="72.5" />
+    </edge>
+    <edge source="Food" target="Snake" relationship="TO_ONE">
+      <point x="77.71428571428578" y="-161.0" />
+      <point x="1377.7690275354034" y="1200.0" />
+      <point x="1539.999186265562" y="1200.0" />
+      <point x="1539.999186265562" y="1180.0" />
+      <point x="1759.2045537900394" y="1180.0" />
+      <point x="-119.66666666666674" y="249.0" />
+    </edge>
+    <edge source="GameScene" target="KeyL" relationship="TO_ONE">
+      <point x="-56.470588235294144" y="-139.0" />
+      <point x="1442.6936001488377" y="2802.0" />
+      <point x="747.9288942664848" y="2802.0" />
+      <point x="747.9288942664848" y="2792.0" />
+      <point x="738.6788942664848" y="2792.0" />
+      <point x="49.5" y="73.0" />
+    </edge>
+    <edge source="Snake" target="Direction" relationship="DEPENDENCY">
+      <point x="153.8571428571429" y="-249.0" />
+      <point x="2032.728363313849" y="640.0" />
+      <point x="2223.8712204567064" y="640.0" />
+      <point x="44.5" y="95.0" />
+    </edge>
+    <edge source="SnakeAI" target="Obstacle" relationship="DEPENDENCY">
+      <point x="-36.076923076923094" y="-271.0" />
+      <point x="1740.2152311160648" y="2128.0" />
+      <point x="1629.7422385620916" y="2128.0" />
+      <point x="1629.7422385620916" y="640.0" />
+      <point x="1226.1641883841319" y="640.0" />
+      <point x="1226.1641883841319" y="590.0" />
+      <point x="1021.4141883841319" y="590.0" />
+      <point x="-59.25" y="172.0" />
+    </edge>
+    <edge source="Window" target="GameOverScene" relationship="TO_ONE">
+      <point x="-7.25" y="-183.5" />
+      <point x="623.1788942664848" y="3241.0" />
+      <point x="568.6940119045958" y="3241.0" />
+      <point x="-48.0" y="183.0" />
+    </edge>
+    <edge source="Snake" target="Rect" relationship="TO_ONE">
+      <point x="0.0" y="-249.0" />
+      <point x="1878.8712204567062" y="640.0" />
+      <point x="1899.0140775995633" y="640.0" />
+      <point x="1899.0140775995633" y="185.0" />
+      <point x="1346.0100989639748" y="185.0" />
+      <point x="1346.0100989639748" y="165.0" />
+      <point x="1288.7600989639748" y="165.0" />
+      <point x="-62.75" y="72.5" />
+    </edge>
+    <edge source="Frog" target="Rect" relationship="TO_ONE">
+      <point x="-100.66666666666674" y="-216.0" />
+      <point x="1092.986598637432" y="1604.0" />
+      <point x="1023.6711360876023" y="1604.0" />
+      <point x="1023.6711360876023" y="610.0" />
+      <point x="940.6641883841319" y="610.0" />
+      <point x="940.6641883841319" y="185.0" />
+      <point x="1346.0100989639748" y="185.0" />
+      <point x="1346.0100989639748" y="165.0" />
+      <point x="1288.7600989639748" y="165.0" />
+      <point x="-62.75" y="72.5" />
+    </edge>
+    <edge source="SnakeAI" target="Snake" relationship="TO_ONE">
+      <point x="-72.15384615384619" y="-271.0" />
+      <point x="1704.1383080391415" y="2138.0" />
+      <point x="1618.7422385620916" y="2138.0" />
+      <point x="1618.7422385620916" y="1200.0" />
+      <point x="1539.999186265562" y="1200.0" />
+      <point x="1539.999186265562" y="1180.0" />
+      <point x="1759.2045537900394" y="1180.0" />
+      <point x="-119.66666666666674" y="249.0" />
+    </edge>
+    <edge source="SnakeAI" target="Frog" relationship="TO_ONE">
+      <point x="-180.38461538461547" y="-271.0" />
+      <point x="1595.9075388083725" y="2168.0" />
+      <point x="1520.7921541929877" y="2168.0" />
+      <point x="1520.7921541929877" y="2088.0" />
+      <point x="1193.653265304099" y="2088.0" />
+      <point x="0.0" y="216.0" />
+    </edge>
+    <edge source="Window" target="GameScene" relationship="CREATE">
+      <point x="50.75" y="-183.5" />
+      <point x="681.1788942664848" y="3271.0" />
+      <point x="1499.1641883841319" y="3271.0" />
+      <point x="0.0" y="139.0" />
+    </edge>
+    <edge source="GameScene" target="Food" relationship="TO_ONE">
+      <point x="-9.411764705882433" y="-139.0" />
+      <point x="1490.2921541929877" y="1574.0" />
+      <point x="1209.388075154451" y="1574.0" />
+      <point x="-90.66666666666674" y="161.0" />
+    </edge>
+    <edge source="Window" target="MenuScene" relationship="CREATE">
+      <point x="-21.75" y="-183.5" />
+      <point x="608.6788942664848" y="3251.0" />
+      <point x="330.44401190459575" y="3251.0" />
+      <point x="-56.75" y="183.0" />
+    </edge>
+    <edge source="Window" target="Scene" relationship="TO_ONE">
+      <point x="-36.25" y="-183.5" />
+      <point x="594.1788942664848" y="3261.0" />
+      <point x="196.00651190459575" y="3261.0" />
+      <point x="196.00651190459575" y="2822.0" />
+      <point x="303.5" y="2822.0" />
+      <point x="-40.0" y="50.5" />
+    </edge>
+    <edge source="Frog" target="Window" relationship="DEPENDENCY">
+      <point x="100.66666666666674" y="216.0" />
+      <point x="1294.3199319707655" y="2108.0" />
+      <point x="2330.566921814172" y="2108.0" />
+      <point x="2330.566921814172" y="3291.0" />
+      <point x="695.6788942664848" y="3291.0" />
+      <point x="65.25" y="-183.5" />
+    </edge>
+    <edge source="Window" target="KeyL" relationship="CREATE">
+      <point x="21.75" y="-183.5" />
+      <point x="652.1788942664848" y="3251.0" />
+      <point x="723.1940119045958" y="3251.0" />
+      <point x="723.1940119045958" y="2812.0" />
+      <point x="721.6914818946145" y="2812.0" />
+      <point x="721.6914818946145" y="2792.0" />
+      <point x="639.6788942664848" y="2792.0" />
+      <point x="-49.5" y="73.0" />
+    </edge>
+    <edge source="Snake" target="Window" relationship="DEPENDENCY">
+      <point x="119.66666666666674" y="249.0" />
+      <point x="1998.537887123373" y="1180.0" />
+      <point x="2330.566921814172" y="1180.0" />
+      <point x="2330.566921814172" y="3291.0" />
+      <point x="695.6788942664848" y="3291.0" />
+      <point x="65.25" y="-183.5" />
+    </edge>
+    <edge source="MenuScene" target="Scene" relationship="GENERALIZATION">
+      <point x="-14.1875" y="-183.0" />
+      <point x="373.00651190459575" y="2822.0" />
+      <point x="383.5" y="2822.0" />
+      <point x="40.0" y="50.5" />
+    </edge>
+    <edge source="SnakeAI" target="Direction" relationship="TO_ONE">
+      <point x="144.30769230769238" y="-271.0" />
+      <point x="1920.59984650068" y="2158.0" />
+      <point x="2212.8712204567064" y="2158.0" />
+      <point x="2212.8712204567064" y="620.0" />
+      <point x="2134.8712204567064" y="620.0" />
+      <point x="-44.5" y="95.0" />
+    </edge>
+    <edge source="Window" target="MouseL" relationship="TO_ONE">
+      <point x="-50.75" y="-183.5" />
+      <point x="579.6788942664848" y="3271.0" />
+      <point x="159.06648189461475" y="3271.0" />
+      <point x="159.06648189461475" y="2792.0" />
+      <point x="184.5" y="2792.0" />
+      <point x="58.0" y="95.0" />
+    </edge>
+    <edge source="GameScene" target="Obstacle" relationship="TO_ONE">
+      <point x="-18.82352941176464" y="-139.0" />
+      <point x="1480.3406589723672" y="2762.0" />
+      <point x="826.9141883841319" y="2762.0" />
+      <point x="826.9141883841319" y="630.0" />
+      <point x="1237.1641883841319" y="630.0" />
+      <point x="1237.1641883841319" y="580.0" />
+      <point x="1139.9141883841319" y="580.0" />
+      <point x="59.25" y="172.0" />
+    </edge>
+    <edge source="MenuScene" target="KeyL" relationship="TO_ONE">
+      <point x="99.3125" y="-183.0" />
+      <point x="486.50651190459575" y="2802.0" />
+      <point x="747.9288942664848" y="2802.0" />
+      <point x="747.9288942664848" y="2792.0" />
+      <point x="738.6788942664848" y="2792.0" />
+      <point x="49.5" y="73.0" />
+    </edge>
+    <edge source="GameScene" target="Scene" relationship="GENERALIZATION">
+      <point x="-75.29411764705878" y="-139.0" />
+      <point x="1423.870070737073" y="2822.0" />
+      <point x="383.5" y="2822.0" />
+      <point x="40.0" y="50.5" />
+    </edge>
+    <edge source="Frog" target="Constants" relationship="DEPENDENCY">
+      <point x="-134.22222222222217" y="-216.0" />
+      <point x="1059.4310430818769" y="1614.0" />
+      <point x="891.1641883841319" y="1614.0" />
+      <point x="891.1641883841319" y="195.0" />
+      <point x="912.6767760122616" y="195.0" />
+      <point x="0.0" y="72.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="0.3999999999999999" showDependencies="true" x="1191.2500000000005" y="699.2500000000001" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Constructors</Category>
+    <Category>Fields</Category>
+    <Category>Inner Classes</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

@@ -3,6 +3,9 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.Random;
 
+/**
+ * Klasa prezentująca węża sterowanego przez AI
+ */
 public class SnakeAI {
     public Rect[] body = new Rect[300];
     public double bodyWidth, bodyHeight;
@@ -22,6 +25,19 @@ public class SnakeAI {
 
     public Rect background;
 
+    /**
+     *Tworzy obiekt klasy SnakeAI
+     * @param obstacle - przeszkoda na planszy
+     * @param snake - wąż sterowany przez gracza
+     * @param food - jedzenie
+     * @param frog - żaba
+     * @param size - rozmiar węża AI
+     * @param startX - pozycja startowa x
+     * @param startY - pozycja startowa y
+     * @param bodyWidth - szerokość elementu
+     * @param bodyHeight - długość elementu
+     * @param background - okno gry
+     */
     public SnakeAI(Obstacle obstacle,Snake snake, Food food,Frog frog, int size, double startX, double startY, double bodyWidth, double bodyHeight, Rect background) { //constructor
         this.obstacle = obstacle;
         this.snake = snake;
@@ -39,6 +55,11 @@ public class SnakeAI {
         } // this loop allows creating place for new rectangle
         head--;
     }
+
+    /**
+     * Aktualizacja pozucji i kolizji
+     * @param dt
+     */
     public void update(double dt) {
         if (waitTimeLeft > 0) {
             waitTimeLeft -= dt;
@@ -94,6 +115,9 @@ public class SnakeAI {
 
     }
 
+    /**
+     * Zwiększanie węża po zjedzeniu elementu gry
+     */
     public void grow() {
         double newX = 0;
         double newY = 0;
@@ -120,11 +144,11 @@ public class SnakeAI {
 
     } // snake growing after eating food
 
-    public boolean intersectingWithSelf() {
-        Rect headR = body[head];
-        return intersectingWithRect(headR);
-    } //detecting crashes of our snake with himself
-
+    /**
+     * Wykrywanie kolizji z innym elementem
+     * @param rect
+     * @return
+     */
     public boolean intersectingWithRect(Rect rect) {
         for (int i = tail; i != head; i = (i + 1) % body.length) {
             if (intersecting(rect, body[i])) return true;
@@ -132,31 +156,33 @@ public class SnakeAI {
         return false;
     }//detecting crashes with food
 
+    /**
+     * Wykrywanie kolizji z wężem sterowanym przez gracza
+     * @param snake
+     * @return
+     */
     public boolean intersectingWithSnake(Snake snake){
         for(int i = snake.tail; i != snake.head; i = (i + 1) % snake.body.length){
             if(intersectingWithRect(snake.body[i])) return true;
         }
         return false;
     }
-    public boolean intersectingWithSnakeAI(){
-        for(int i = tail; i != head; i = (i + 1) % body.length){
-            if(intersectingWithRect(body[i])) return true;
-        }
-        return false;
-    }
 
-
-    public boolean intersectingWithScreenBoundaries(Rect head) {
-        return (head.x < background.x || (head.x + head.width) > background.x + background.width ||
-                head.y < background.y || (head.y + head.height) > background.y + background.height);
-    }
-
-
+    /**
+     * Kolizja pomiędzy 2 elementami
+     * @param r1
+     * @param r2
+     * @return
+     */
     public boolean intersecting(Rect r1, Rect r2) {
         return (r1.x >= r2.x && r1.x + r1.width <= r2.x + r2.width &&
                 r1.y >= r2.y && r1.y + r1.height <= r2.y + r2.height);
     } //detecting crashes
 
+    /**
+     * Zmiana kierunku ruchu
+     * @param newDirection
+     */
     public void changeDirection(Direction newDirection) {
         if (newDirection == Direction.RIGHT && direction != Direction.LEFT)
             direction = newDirection;
@@ -168,31 +194,12 @@ public class SnakeAI {
             direction = newDirection;
     } //thanks to these else ifs we can avoid snake going into himself (he cant stop etc)
 
-    public Direction randDirection(Direction dir) {
-        if(dir==Direction.DOWN){
-            int i = new Random().nextInt(2);
-            if (i == 0)dir=Direction.LEFT;
-            if (i==1)dir=Direction.RIGHT;
-        }
-        else if(dir==Direction.UP){
-            int i = new Random().nextInt(2);
-            if (i == 0)dir=Direction.LEFT;
-            if (i==1)dir=Direction.RIGHT;
-        }
-        else if(dir==Direction.LEFT){
-            int i = new Random().nextInt(2);
-            if (i == 0)dir=Direction.DOWN;
-            if (i==1)dir=Direction.UP;
-        }
-        else if(dir==Direction.RIGHT){
-            int i = new Random().nextInt(2);
-            if (i == 0)dir=Direction.DOWN;
-            if (i==1)dir=Direction.UP;
-        }
-        return dir;
-    }
-
-
+    /**
+     * Ruch węża AI
+     * generowanie kolejnych kierunków ruchu węża sterowanego przez AI
+     * głowym założeniem AI jest unikanie granic okna gry oraz przeszkód znajdującyhc się na planszy
+     * dodatkowo snake posuzkuje obiektów klasy Food i rusza sie w ich kierunku
+     */
     public void snake_movement(){
         //Searhing for food
         if(food.rect.x == body[head].x){
@@ -251,14 +258,12 @@ public class SnakeAI {
             if (direction == Direction.UP) changeDirection(Direction.LEFT);
             if (direction == Direction.RIGHT) changeDirection(Direction.DOWN);
         }
+    }
 
-
-
-
-
-
-        }
-
+    /**
+     * Rysowanie wężaAI
+     * @param g2
+     */
     public void draw(Graphics2D g2) {
         for (int i = tail; i != head; i = (i+1) % body.length) {
             Rect piece = body[i]; //incrementing our snake

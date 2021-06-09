@@ -1,3 +1,6 @@
+/**
+ * Element (kwadrat) z którego budowane są elementy gry np. snake
+ */
 public class Rect {
 	public double x, y, width, height;
 	

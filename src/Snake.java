@@ -1,7 +1,9 @@
 import java.awt.geom.Rectangle2D;
 import java.awt.*;
 
-
+/**
+ * Klasa reprrezentująca głowny element gry - węża sterowanego przez gracza
+ */
 public class Snake {
 	public Rect[] body = new Rect[300];
 	public double bodyWidth, bodyHeight;
@@ -18,7 +20,17 @@ public class Snake {
 	
 	public Rect background;
 	public Obstacle obstacle;
-	
+
+	/**
+	 * Tworzy obiekt klasy Snake
+	 * @param obstacle - przeszkody na planszy
+	 * @param size - rozmiar węża
+	 * @param startX - startowa pozycja x
+	 * @param startY - startowa pozycja y
+	 * @param bodyWidth - szerokość elementu ciała
+	 * @param bodyHeight - długość eleemntu ciała
+	 * @param background - okno gry
+	 */
 	public Snake(Obstacle obstacle,int size, double startX, double startY, double bodyWidth, double bodyHeight, Rect background) { //constructor
 		this.obstacle = obstacle;
 		this.size = size; //integer consists size of snake
@@ -33,7 +45,11 @@ public class Snake {
 		} // this loop allows creating place for new rectangle
 		head--;
 	}
-	
+
+	/**
+	 * Zmiana kierunku ruchu węża
+	 * @param newDirection - nowy kierunek ruchu
+	 */
 	public void changeDirection(Direction newDirection) {
 		if (newDirection == Direction.RIGHT && direction != Direction.LEFT)
 		direction = newDirection;
@@ -44,7 +60,12 @@ public class Snake {
 		else if (newDirection == Direction.DOWN && direction != Direction.UP)
 			direction = newDirection;
 	} //thanks to these else ifs we can avoid snake going into himself (he cant stop etc)
-	
+
+	/**
+	 * Aktualizacja węża
+	 * Sprawdza kolizję z innymi obiektami
+	 * @param dt
+	 */
 	 public void update(double dt) {
 	        if (waitTimeLeft > 0) {
 	            waitTimeLeft -= dt;
@@ -83,32 +104,54 @@ public class Snake {
 	        body[head].x = newX;
 	        body[head].y = newY;
 	}
-	 
+
+	/**
+	 * Sprawdzanie kolizji węża
+	 * @return
+	 */
 	 public boolean intersectingWithSelf() {
 		 Rect headR = body[head];
 		 return intersectingWithRect(headR) || intersectingWithScreenBoundaries(headR)|| obstacle.intersectingWithRect(headR);
 		 } //detecting crashes of our snake with himself
-	
+
+	/**
+	 * Kolizja węża z elementem
+	 * @param rect
+	 * @return
+	 */
 	 public boolean intersectingWithRect(Rect rect) {
 	        for (int i = tail; i != head; i = (i + 1) % body.length) {
 	            if (intersecting(rect, body[i])) return true;
 	        }
 	        return false;
 	    }//detecting crashes with food
-	 
 
-	 
+
+	/**
+	 *Kolizja pomiędzy 2 elementami
+	 * @param r1
+	 * @param r2
+	 * @return
+	 */
 	 public boolean intersecting(Rect r1, Rect r2) {
 		 return (r1.x >= r2.x && r1.x + r1.width <= r2.x + r2.width && 
 				 r1.y >= r2.y && r1.y + r1.height <= r2.y + r2.height);
 	 } //detecting crashes
-	 
+
+	/**
+	 * Kolizja z granicami okna gry
+	 * @param head
+	 * @return
+	 */
 	 public boolean intersectingWithScreenBoundaries(Rect head) {
 		 return (head.x < background.x || (head.x + head.width) > background.x + background.width ||
 				 head.y < background.y || (head.y + head.height) > background.y + background.height);
 	 }
-	 
-	 public void grow() {
+
+	/**
+	 * Zwiększzanie węża po zjedzeniu elementu gry
+	 */
+	public void grow() {
 		 double newX = 0;
 		 double newY = 0;
 		 
@@ -133,7 +176,11 @@ public class Snake {
 		 body[tail] = newBodyPiece;
 		 
 	 } // snake growing after eating food
-	 
+
+	/**
+	 * Rysowanie węża
+	 * @param g2
+	 */
 	public void draw(Graphics2D g2) {
 		for (int i = tail; i != head; i = (i+1) % body.length) {
 			Rect piece = body[i]; //incrementing our snake

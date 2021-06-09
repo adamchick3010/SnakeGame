@@ -2,6 +2,11 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.Random;
 
+/**
+ * Uciekająca żaba
+ * Jest to element w oknie gry, który ucieka przed wężem
+ * Jej wartość to 3 punkty
+ */
 public class Frog {
     public Rect background;
     public Snake snake;
@@ -16,6 +21,16 @@ public class Frog {
     public double ogWaitBetweenUpdates = 0.2f;
     public double waitTimeLeft = ogWaitBetweenUpdates;
 
+    /**
+     *Tworzy obiekt klasy Frog
+     * @param background - okno gry
+     * @param snake
+     * @param food
+     * @param obstacle
+     * @param width - szerokość elementu
+     * @param height - wysokość elelemtu
+     * @param color - kolor żaby
+     */
     public Frog(Rect background, Snake snake,Food food,Obstacle obstacle, int width, int height, Color color) {
         this.background = background;
         this.snake = snake;
@@ -29,6 +44,9 @@ public class Frog {
         xPadding = (int)((Constants.TILE_WIDTH - this.width) / 2.0); //setting padding on our food
     }
 
+    /**
+     *Generuje żabę w losowym miejscu na planszy do gry
+     */
     public void spawn() {
         do {
             double randX = (int)(Math.random() * (int)(background.width / Constants.TILE_WIDTH)) * Constants.TILE_WIDTH + background.x; //generating random number which exists in the x scale background
@@ -39,6 +57,10 @@ public class Frog {
         this.isSpawned = true;
     }
 
+    /**
+     * Aktualizuje pozycje żaby oraz sprawdza czy została zjedzona
+     * @param dt
+     */
     public void update1(double dt) {
         if (waitTimeLeft > 0) {
             waitTimeLeft -= dt;
@@ -56,7 +78,9 @@ public class Frog {
         move();
     }
 
-
+    /**
+     *Generuje losowe ruchy żaby, tak aby nie wychodziła poza okno gry oraz uciekała przed wężem
+     */
     public void move(){
         //Frog movement, random moves avoiding snake
         ArrayList<Rect> options = new ArrayList<Rect>();
@@ -90,11 +114,21 @@ public class Frog {
 
     }
 
+    /**
+     * Wykrywanie kolizji
+     * @param r1
+     * @param r2
+     * @return
+     */
     public boolean intersecting(Rect r1, Rect r2) {
         return (r1.x >= r2.x && r1.x + r1.width <= r2.x + r2.width &&
                 r1.y >= r2.y && r1.y + r1.height <= r2.y + r2.height);
     } //detecting crashes
 
+    /**
+     * Rysowanie zaby na planszy
+     * @param g2
+     */
     public void draw(Graphics2D g2) {
         g2.setColor(color);
 //        g2.fillRect(x + xPadding,  y + xPadding,  width,  height);

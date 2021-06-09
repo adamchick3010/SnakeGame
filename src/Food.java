@@ -1,6 +1,10 @@
 import java.awt.*;
 
-
+/**
+ * Klasa reprezentujaca jedzenie
+ * element gry, generowany losowo
+ * Jego wartość to 1 punkt
+ */
 public class Food {
 	public Rect background;
 	public Snake snake;
@@ -13,6 +17,15 @@ public class Food {
 	
 	public boolean isSpawned = false;
 
+	/**
+	 * Tworzy obiekt klasy Food
+	 * @param background - okno gry
+	 * @param snake
+	 * @param obstacle - wygenerowana przeszkoda
+	 * @param width
+	 * @param height
+	 * @param color
+	 */
 	public Food(Rect background, Snake snake,Obstacle obstacle ,int width, int height, Color color) {
 		this.background = background;
 		this.snake = snake;
@@ -24,7 +37,10 @@ public class Food {
 		
 		xPadding = (int)((Constants.TILE_WIDTH - this.width) / 2.0); //setting padding on our food
 	}
-	
+
+	/**
+	 * Generuje jedzenie losowo umieszczone na planszy do gry
+	 */
 	public void spawn() {
 		do {
 			double randX = (int)(Math.random() * (int)(background.width / Constants.TILE_WIDTH)) * Constants.TILE_WIDTH + background.x; //generating random number which exists in the x scale background
@@ -35,6 +51,10 @@ public class Food {
 		this.isSpawned = true;
 	}
 
+	/**
+	 * Aktualizacja czy obiekt jest zjedzony
+	 * @param dt
+	 */
 	public void update(double dt) {
 		if (snake.intersectingWithRect(this.rect)) {
             snake.grow();
@@ -44,7 +64,11 @@ public class Food {
             isSpawned = false;
         }
 	}
-	
+
+	/**
+	 * Rysuje obiekt
+	 * @param g2
+	 */
     public void draw(Graphics2D g2) {
         g2.setColor(color);
 //        g2.fillRect(x + xPadding,  y + xPadding,  width,  height);
